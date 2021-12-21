@@ -2,7 +2,10 @@
 Yet another Tic Tac Toe game written in pure C.
 
 ## Installing dependencies
-Arch - sudo pacman -S --needed sdl2 sdl2_gfx cmake
+Arch
+  ```sh
+  $ sudo pacman -S --needed sdl2 sdl2_gfx cmake
+  ```
 
 ## Build & Run
 ```sh

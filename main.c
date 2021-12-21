@@ -39,21 +39,18 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    enum CELL_STATE cell_state = EMPTY;
     game_t game = {
         .board = {
-            cell_state, cell_state, cell_state,
-            cell_state, cell_state, cell_state,
-            cell_state, cell_state, cell_state
+            EMPTY, EMPTY, EMPTY,
+            EMPTY, EMPTY, EMPTY,
+            EMPTY, EMPTY, EMPTY
         },
         .player = PLAYER_X,
         .state = RUNNING
     };
 
 
-    const float cell_width = SCREEN_WIDTH / N;
-    const float cell_height = SCREEN_HEIGHT / N;
-    SDL_Event e;
+   SDL_Event e;
 
     while (game.state != END)
     {
@@ -65,17 +62,20 @@ int main(int argc, char *argv[])
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    cell_on_click(&game, e.button.y/cell_height, e.button.x/cell_width);
+                    cell_on_click(&game, e.button.y/CELL_HEIGHT, e.button.x/CELL_WIDTH);
+                    break;
+
                 default: {}
             }
         }
         
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
+        render_game(renderer, &game);
         SDL_RenderPresent(renderer);
     }
     
     SDL_DestroyWindow(window);
     SDL_Quit();
-    return 0;
+    return EXIT_SUCCESS;
 }

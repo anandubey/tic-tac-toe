@@ -2,9 +2,11 @@
 #define __GAME_H__
 
 #define N 3
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
-
+#define SCREEN_WIDTH 640.0
+#define SCREEN_HEIGHT 480.0
+#define CELL_WIDTH (SCREEN_WIDTH/N)
+#define CELL_HEIGHT (SCREEN_HEIGHT/N)
+ 
 enum GAME_STATE{
     RUNNING,
     X_WON,
